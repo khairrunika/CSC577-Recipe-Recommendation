@@ -1,39 +1,36 @@
 var username, password;
 
 $('#loginAdminBtn').on('click', function () {
-    username = $("#username").value;
-    password = $("#password").value;
+    username = $("#username").val();
+    password = $("#password").val();
     const data = {
-        "username": username,
-        "password": password
+        username: username,
+        password: password
     }
     login(data);
 });
 
 function login(data) {
     $.ajax({
-        url: 'api/login.php',
+        url: '/CSC577-Recipe-Recommendation/source/api/admin/login.php',
         dataType: 'json',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
         success: function (response) {
-            if (response.success) {
-                window.location.href = 'Dashboard.html';
-            } else {
-                alert(response.message);
-            }
+            window.location.href = '../Admin/Dashboard.html';
+            
         },
         error: function (xhr, status, error) {
-            console.error('Error:', error);
+            // console.log('Error:', error);
             alert('An error occurred. Please try again.');
         }
     });
 }
 
 function validateInput(){
-    username = $("#username").value;
-    password = $("#password").value;
+    username = $("#username").val();
+    password = $("#password").val();
 
     if(username == null || password == null){
         

@@ -4,12 +4,12 @@ session_start();
 header('Content-Type: application/json');
 
 // Database connection
-$servername = "localhost";
-$username = "your_db_username";
-$password = "your_db_password";
-$dbname = "your_db_name";
+$user = 'root';
+$pass = '';
+$conn = 'recipe_rocket';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli('localhost', $user, $pass, $conn) or die("Unable to connect to database");
+
 
 // Check connection
 if ($conn->connect_error) {
@@ -30,11 +30,11 @@ if (isset($data['username']) && isset($data['password'])) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($admin_id, $hashed_password);
+        $stmt->bind_result($admin_id, $admin_password);
         $stmt->fetch();
 
         // Verify password
-        if (password_verify($password, $hashed_password)) {
+        if (password_verify($password, $admin_password)) {
             $_SESSION['admin_id'] = $admin_id;
             echo json_encode(["success" => true, "message" => "Login successful."]);
         } else {
