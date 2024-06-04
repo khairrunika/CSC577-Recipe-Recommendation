@@ -3,101 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Account</title>
+    <title>Update Account Details</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-.profile-container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.profile-header {
-    text-align: center;
-    padding: 30px;
-    background-color: #4CAF50;
-    color: white;
-}
-
-.profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-.username {
-    font-size: 24px;
-    margin: 10px 0;
-}
-
-.bio {
-    font-size: 16px;
-    margin: 0;
-}
-
-.profile-body {
-    padding: 30px;
-}
-
-.info, .contact-info, .social-media {
-    margin-bottom: 20px;
-}
-
-h2 {
-    margin-top: 0;
-    color: #333;
-}
-
-p, ul {
-    margin: 10px 0;
-    color: #666;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    margin-bottom: 10px;
-}
-
-ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-ul li a:hover {
-    text-decoration: underline;
-}
-
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 400px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button.update {
+            background: #007bff;
+            color: #fff;
+        }
+        button.delete {
+            background: #dc3545;
+            color: #fff;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
-    <h2>Upadate Account Details</h2>
-    <div class="profile-container">
-        <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
-        <h3 class="username">Karen</h3>
-    </div>
-    <div class="profile-body">
-        <div class="contact-info">
-            <ul>
-                <li>Email: Karen@gamil.com</li>
-                <li>Phone: 012-3456789</li>
-                <li>Password: **********</li>
-            </ul>
-            <button>save changes</button>
-        </div>
+    <div class="container">
+        <h1>Update Account Details</h1>
+        <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <div class="button-group">
+                <button type="submit" class="update">Update Details</button>
+                <button type="button" class="delete">Delete Account</button>
+            </div>
+        </form>
     </div>
 </body>
 </html>
