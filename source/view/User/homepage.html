@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Recipe Rocket</title>
+</head>
+<body class="min-h-screen bg-yellow-100 flex flex-col">
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-gray-800">Recipe Rocket</div>
+    <div class="flex-1 flex justify-center space-x-6 text-lg">
+      <a href="#" class="text-gray-600 hover:text-gray-800">Home</a>
+      <a href="#" class="text-gray-600 hover:text-gray-800">Recipe</a>
+      <a href="#" class="text-gray-600 hover:text-gray-800">Search</a>
+    </div>
+    <div class="flex space-x-6 text-lg">
+      <a href="#" class="text-gray-600 hover:text-gray-800 flex items-center">
+        <img aria-hidden="true" alt="chef" src="C:\Users\Khairrunika\Documents\GitHub\CSC577-Recipe-Recommendation\assets\images\chef.png" class="w-6 h-6 object-contain"/>
+      </a>
+      <a href="#" class="text-gray-600 hover:text-gray-800 flex items-center">
+        <img aria-hidden="true" alt="user" src="C:\Users\Khairrunika\Documents\GitHub\CSC577-Recipe-Recommendation\assets\images\user.png" class="w-6 h-6 object-contain"/>
+      </a>
+    </div>
+  </nav>
+
+  <div class="flex flex-1 flex-col md:flex-row">
+    <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+      <h1 class="text-5xl font-extrabold mb-6 text-gray-800">Let's Discover Delicious Dishes For You</h1>
+      <div class="relative">
+        <input type="text" placeholder="Search recipes" class="w-full p-4 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+        <button class="absolute right-3 top-1/2 transform -translate-y-1/2">
+          <img aria-hidden="true" alt="search" src="C:\Users\Khairrunika\Documents\GitHub\CSC577-Recipe-Recommendation\assets\images\iconsearch.png"class="w-6 h-6"/>
+        </button>
+      </div>
+    </div>
+    <div class="hidden md:block w-1/2">
+      <img src="C:\Users\Khairrunika\Documents\GitHub\CSC577-Recipe-Recommendation\assets\images\food2.jpg" alt="Delicious dishes" class="w-full h-full object-cover rounded-r-lg shadow-lg">
+    </div>
+  </div>
+</body>
+</html>
