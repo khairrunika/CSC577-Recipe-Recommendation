@@ -12,13 +12,17 @@ $('#loginAdminBtn').on('click', function () {
 
 function login(data) {
     $.ajax({
-        url: '/CSC577-Recipe-Recommendation/source/api/admin/login.php',
+        url: '/laragon/www/CSC577-Recipe-Recommendation/source/api/admin/login.php',
         dataType: 'json',
         type: 'POST',
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data),
         success: function (response) {
-            window.location.href = '../Admin/Dashboard.html';
+            if (response.success) {
+                window.location.href = '../Admin/Dashboard.html';
+            } else {
+                alert(response.message);
+            }
             
         },
         error: function (xhr, status, error) {

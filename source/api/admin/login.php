@@ -1,7 +1,16 @@
 <?php
 session_start();
 
+// Allow from any origin
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Content-Type: application/json');
+
+// Handle OPTIONS request for preflight
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    exit(0);
+}
 
 // Database connection
 $user = 'root';
@@ -9,7 +18,6 @@ $pass = '';
 $conn = 'recipe_rocket';
 
 $conn = new mysqli('localhost', $user, $pass, $conn) or die("Unable to connect to database");
-
 
 // Check connection
 if ($conn->connect_error) {
