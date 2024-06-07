@@ -5,8 +5,9 @@ header('Content-Type: application/json');
 $user = 'root';
 $pass = '';
 $conn = 'recipe_rocket';
+$port = '3307';
 
-$conn = new mysqli('localhost', $user, $pass, $conn) or die("Unable to connect to database");
+$conn = new mysqli('localhost', $user, $pass, $conn, $port) or die("Unable to connect to database");
 
 
 // Check connection

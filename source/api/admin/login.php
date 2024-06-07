@@ -16,8 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 $user = 'root';
 $pass = '';
 $conn = 'recipe_rocket';
+$port = 3307; // Add this line to specify the port
 
-$conn = new mysqli('localhost', $user, $pass, $conn) or die("Unable to connect to database");
+$conn = new mysqli('localhost', $user, $pass, $conn, $port) or die("Unable to connect to database");
 
 // Check connection
 if ($conn->connect_error) {

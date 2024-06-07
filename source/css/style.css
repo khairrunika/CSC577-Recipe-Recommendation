@@ -83,9 +83,11 @@ body{
 .site-navbar {
     margin-bottom: 0px;
     z-index: 1999;
-    position: absolute;
+    position: fixed;
     top: 2rem;
-    width: 100%; }
+    width: 100%;
+    
+   }
     .site-navbar.transparent {
       background: transparent; }
     .site-navbar.absolute {
@@ -360,3 +362,7 @@ body{
           width: auto; }
           .site-mobile-menu .site-nav-wrap[data-class="social"] > li:first-child a {
             padding-left: 15px !important; }
+/* dashboard */
+.main-content {
+  padding-top: 100px; /* Adjust this value based on the height of your header */
+}
