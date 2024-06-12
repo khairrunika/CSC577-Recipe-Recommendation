@@ -16,9 +16,8 @@ function getAllRecipes(){
                 item["recipe_number"] = (i+1);
                 item["recipe_name"] = response[i].recipe_name;
                 item["recipe_cookingTime"] = response[i].recipe_cookingTime;
-                item["recipe_cuisineType"] = response[i].recipe_cuisineType;
-                item["recipe_mealType"] = response[i].recipe_mealType;
-                item["recipe_dietaryTag"] = response[i].recipe_dietaryTag;
+                item["cuisine_type"] = response[i].cuisine_type;
+                item["meal_type"] = response[i].meal_type;
                 item["recipe_calories"] = response[i].recipe_calories;
                 arrayReturn.push(item);
             }
@@ -41,9 +40,8 @@ function tableListOfRecipes(data){
             { "data": "recipe_number" },
             { "data": "recipe_name" },
             { "data": "recipe_cookingTime" },
-            { "data": "recipe_cuisineType" },
-            { "data": "recipe_mealType" },
-            { "data": "recipe_dietaryTag" },
+            { "data": "cuisine_type" },
+            { "data": "meal_type" },
             { "data": "recipe_calories" }
         ]
     });
