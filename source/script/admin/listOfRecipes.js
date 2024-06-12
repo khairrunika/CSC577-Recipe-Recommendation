@@ -46,3 +46,18 @@ function tableListOfRecipes(data){
         ]
     });
 }
+//log out
+$("#logoutBtn").click(function() {
+    $.ajax({
+        url: '/CSC577-Recipe-Recommendation/source/api/admin/logout.php',
+        type: 'POST',
+        success: function(response) {
+            // Redirect to login page after logout
+            window.location.href = "../Admin/Login.html";
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+});
