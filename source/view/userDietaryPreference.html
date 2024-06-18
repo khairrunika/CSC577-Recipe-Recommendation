@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- title -->
+        <title>User Preferences | Recipe Rocket</title>
+
+        <!-- meta -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            *,
+            *::before,
+            *::after {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            /* Base font settings */
+            body,
+            input {
+                font-family: "Poppins", sans-serif;
+            }
+
+            /* Main section styling */
+            main {
+                width: 100%;
+                min-height: 100vh;
+                background-color: #ff8c6b;
+                padding: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Form section styling */
+            .form-section {
+                min-height: 100vh;
+                background: #EBE5D6;
+                padding: 40px;
+            }
+
+            .container {
+                max-width: 900px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .form-wrapper {
+                display: flex;
+                margin: 40px 0;
+                gap: 20px;
+            }
+
+            .form-content {
+                flex-basis: 40%;
+                padding: 3em 3.5em;
+                background: #fff;
+                box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+            }
+
+            
+
+            
+
+            .logo {
+                text-align: center;
+            }
+
+            .close-button {
+                cursor: pointer;
+                height: 35px;
+                width: 35px;
+                position: absolute;
+                right: -5px;
+                top: -5px;
+                background: #62c16e;
+                border-radius: 50%;
+                color: #fff;
+                text-align: center;
+            }
+
+            form {
+                margin: 30px 0;
+            }
+
+            p{
+                text-align: center;
+            }
+
+            button {
+                font-size: 18px;
+                color: #fff;
+                width: 100%;
+                background: #5C4724;
+                padding: 14px 15px;
+                font-weight: 500;
+                transition: 0.3s ease;
+                border: none;
+            }
+
+            button:hover {
+                background: #2f302f;
+                color: white;
+            }
+
+            /* User Preferences Styling */
+            .user-preferences {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+
+            .user-preferences h4 {
+                margin-top: 0;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+
+            .user-preferences ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .user-preferences li {
+                margin-bottom: 10px;
+            }
+
+            .user-preferences a {
+                color: #333;
+                text-decoration: none;
+            }
+
+            .user-preferences a:hover {
+                text-decoration: underline;
+            }
+
+            .container {
+                width: 80%;
+                margin: 20px auto;
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .header {
+                background-color: #f5f5f5;
+                padding: 10px;
+                border-radius: 5px 5px 0 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .header h1 {
+                margin: 0;
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            .header .icon-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .header .icon {
+                margin-right: 10px;
+                font-size: 1.5em;
+            }
+
+            .user-info {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .user-info img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .user-info h2 {
+                margin: 0;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+
+            .sidebar {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                width: 20%;
+                margin-right: 20px;
+                float: left;
+            }
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .sidebar li {
+                margin-bottom: 10px;
+            }
+
+            .sidebar li a {
+                display: block;
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #333;
+                transition: background-color 0.3s ease;
+            }
+
+            .sidebar li a:hover {
+                background-color: #ddd;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Recipe Rocket.</h1>
+            <div class="icon-container">
+              <i class="icon">&#128290;</i>
+              <i class="icon">&#128100;</i>
+            </div>
+        </div>
+        <div class="user-info">
+            <img src="https://via.placeholder.com/60" alt="Profile Picture">
+            <h2>Sarah</h2>
+          </div>
+          <div class="sidebar">
+            <ul>
+              <li><a href="#">User Preferences</a></li>
+              <li><a href="#">Saved Recipe</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+        <section class="form-section">
+            <div class="container">
+                <div class="form-wrapper">
+                    
+                        <h2>What are your preferences?</h2>
+                        <h4>Select your dietary preferences :</h4>
+                        <form action="" method="post">
+                            <input type="checkbox" name="dietaryPref" id="vegetarian" value="vegetarian">
+                            <label for="vegetarian">Vegetarian</label><br>
+                            <input type="checkbox" name="dietaryPref" id="low_carb" value="low-carb">
+                            <label for="low_carb">Low-Carb</label><br>
+                            <input type="checkbox" name="dietaryPref" id="vegan" value="vegan">
+                            <label for="vegan">Vegan</label><br>
+                            <input type="checkbox" name="dietaryPref" id="low_calorie" value="low-calorie">
+                            <label for="low_calorie">Low-Calorie</label><br>
+                            <input type="checkbox" name="dietaryPref" id="gluten_free" value="gluten-free">
+                            <label for="gluten_free">Gluten-Free</label><br>
+                            <input type="checkbox" name="dietaryPref" id="nut_free" value="nut-free">
+                            <label for="nut_free">Nut-Free</label><br>
+                            <input type="checkbox" name="dietaryPref" id="dairy_free" value="dairy-free">
+                            <label for="dairy_free">Dairy-Free</label><br>
+                            <input type="checkbox" name="dietaryPref" id="keto" value="keto">
+                            <label for="keto">Keto</label><br>
+                            <button class="btn" name="submit" type="submit">Save Changes</button>
+                        </form>
+                    
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
