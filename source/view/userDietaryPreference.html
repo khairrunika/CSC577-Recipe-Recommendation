@@ -42,20 +42,21 @@
             }
 
             .container {
-                max-width: 890px;
+                max-width: 900px;
                 margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
-
-            img {
-                border-top-right-radius: 8px;
-                border-bottom-right-radius: 8px;
-                width: 100%;
-                height:100%;
+            .form-wrapper {
+                display: flex;
+                margin: 40px 0;
+                gap: 20px;
             }
 
             .form-content {
-                flex-basis: 90%;
+                flex-basis: 40%;
                 padding: 3em 3.5em;
                 background: #fff;
                 box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
@@ -63,13 +64,12 @@
                 border-bottom-left-radius: 8px;
             }
 
+            
+
+            
+
             .logo {
                 text-align: center;
-            }
-
-            .form-wrapper {
-                display: flex;
-                margin: 40px 0;
             }
 
             .close-button {
@@ -101,22 +101,159 @@
                 padding: 14px 15px;
                 font-weight: 500;
                 transition: 0.3s ease;
+                border: none;
             }
 
             button:hover {
                 background: #2f302f;
                 color: white;
             }
+
+            /* User Preferences Styling */
+            .user-preferences {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+
+            .user-preferences h4 {
+                margin-top: 0;
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+
+            .user-preferences ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .user-preferences li {
+                margin-bottom: 10px;
+            }
+
+            .user-preferences a {
+                color: #333;
+                text-decoration: none;
+            }
+
+            .user-preferences a:hover {
+                text-decoration: underline;
+            }
+
+            .container {
+                width: 80%;
+                margin: 20px auto;
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .header {
+                background-color: #f5f5f5;
+                padding: 10px;
+                border-radius: 5px 5px 0 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .header h1 {
+                margin: 0;
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+
+            .header .icon-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .header .icon {
+                margin-right: 10px;
+                font-size: 1.5em;
+            }
+
+            .user-info {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            .user-info img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            .user-info h2 {
+                margin: 0;
+                font-size: 1.2em;
+                font-weight: bold;
+            }
+
+            .sidebar {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                width: 20%;
+                margin-right: 20px;
+                float: left;
+            }
+
+            .sidebar ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .sidebar li {
+                margin-bottom: 10px;
+            }
+
+            .sidebar li a {
+                display: block;
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #333;
+                transition: background-color 0.3s ease;
+            }
+
+            .sidebar li a:hover {
+                background-color: #ddd;
+            }
+
         </style>
     </head>
 
     <body>
-        <!-- form section start -->
+        <div class="header">
+            <h1>Recipe Rocket.</h1>
+            <div class="icon-container">
+              <i class="icon">&#128290;</i>
+              <i class="icon">&#128100;</i>
+            </div>
+        </div>
+        <div class="user-info">
+            <img src="https://via.placeholder.com/60" alt="Profile Picture">
+            <h2>Sarah</h2>
+          </div>
+          <div class="sidebar">
+            <ul>
+              <li><a href="#">User Preferences</a></li>
+              <li><a href="#">Saved Recipe</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
         <section class="form-section">
             <div class="container">
-                <!-- form start-->
                 <div class="form-wrapper">
-                    <div class="form-content">
+                    
                         <h2>What are your preferences?</h2>
                         <h4>Select your dietary preferences :</h4>
                         <form action="" method="post">
@@ -136,16 +273,11 @@
                             <label for="dairy_free">Dairy-Free</label><br>
                             <input type="checkbox" name="dietaryPref" id="keto" value="keto">
                             <label for="keto">Keto</label><br>
-                            <button class="btn" name="submit" type="submit">Submit</button>
+                            <button class="btn" name="submit" type="submit">Save Changes</button>
                         </form>
-                    </div>
-                    <div class="form-image">
-                        <img src="assets/images/img1.jpg" alt="" />
-                    </div>
+                    
                 </div>
-                <!-- form end-->
             </div>
         </section>
-        <!-- //form section end -->
     </body>
 </html>

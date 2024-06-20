@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recipe Rocket - Update Account Details</title>
+<style>
+            body {
+  font-family: sans-serif;
+  background-color: #EBE5D6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.header .icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.header .icon {
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-info h2 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.sidebar {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 20%;
+  margin-right: 40px;
+  float: left;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar li a {
+  display: block;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar li a:hover {
+  background-color: #ddd;
+}
+
+.form-container {
+  width: 70%;
+  float: right;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color:  #5C4724;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color:  #5C4724;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Recipe Rocket.</h1>
+    <div class="icon-container">
+      <i class="icon">&#128290;</i>
+      <i class="icon">&#128100;</i>
+    </div>
+  </div>
+  <div class="user-info">
+    <img src="https://via.placeholder.com/60" alt="Profile Picture">
+    <h2>Sarah</h2>
+  </div>
+  <div class="sidebar">
+    <ul>
+      <li><a href="userDietaryPreferences.html">User Preferences</a></li>
+      <li><a href="#">Saved Recipe</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+  </div>
+  <div class="form-container">
+    <h2>Update Account Details</h2>
+    <form>
+      <div class="form-group">
+        <label for="username">Enter username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Enter email address:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Enter phone number:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Enter password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="button">Save Changes</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
