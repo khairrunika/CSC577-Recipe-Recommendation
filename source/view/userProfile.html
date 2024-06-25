@@ -1,182 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Recipe Rocket - Update Account Details</title>
-<style>
-            body {
-  font-family: sans-serif;
-  background-color: #EBE5D6;
-  margin: 0;
-  padding: 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Rocket - Update Account Details</title>
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
 }
+
+header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f0e8d9;
+        padding: 10px 20px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: black;
+      }
+
+      .icons {
+        display: flex;
+      }
+
+      .icons .icon {
+        margin-left: 10px;
+        width: 24px;
+        height: 24px;
+        background-color: gray; /* Placeholder for icons */
+        border-radius: 50%;
+      }
+
 
 .container {
-  width: 80%;
-  margin: 20px auto;
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
 }
 
-.header {
-  background-color: #f5f5f5;
-  padding: 10px;
-  border-radius: 5px 5px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+aside {
+    width: 200px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 1.5em;
-  font-weight: bold;
+aside .user-info {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.header .icon-container {
-  display: flex;
-  align-items: center;
+aside .user-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 
-.header .icon {
-  margin-right: 10px;
-  font-size: 1.5em;
+aside h2 {
+    font-size: 18px;
+    margin: 10px 0 0;
 }
 
-.user-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.user-info img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 10px;
+aside ul li {
+    margin: 10px 0;
 }
 
-.user-info h2 {
-  margin: 0;
-  font-size: 1.2em;
-  font-weight: bold;
+aside ul li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
 }
 
-.sidebar {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 20%;
-  margin-right: 40px;
-  float: left;
+aside ul li.active a {
+    background-color: #f0e6d6;
+    color: #000;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
 }
 
-.sidebar li {
-  margin-bottom: 10px;
+main h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.sidebar li a {
-  display: block;
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: #333;
-  transition: background-color 0.3s ease;
+form .form-group {
+    margin-bottom: 15px;
 }
 
-.sidebar li a:hover {
-  background-color: #ddd;
+form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
-.form-container {
-  width: 70%;
-  float: right;
+form .form-group input {
+    width: calc(50% - 20px);
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.form-group {
-  margin-bottom: 20px;
+
+
+button {
+    background-color: #5a4c2e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+button:hover {
+    background-color: #473c25;
 }
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color:  #5C4724;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color:  #5C4724;
-}
-</style>
+    </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h1>Recipe Rocket.</h1>
-    <div class="icon-container">
-      <i class="icon">&#128290;</i>
-      <i class="icon">&#128100;</i>
+  <header>
+    <div class="logo">Recipe Rocket</div>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="recipe.html">Recipe</a>
+      <a href="search.html">Search</a>
+    </nav>
+    <div class="icons">
+      <span
+        class="icon chef-hat"
+        img
+        src="/assets/images/bookrecipe.png"
+      ></span>
+      <span class="icon user" img src="/assets/images/profile.png"></span>
     </div>
+  </header>
+  <div class="container">
+      <aside>
+          <div class="user-info">
+              <div class="user-icon"></div>
+              <h2>Sarah</h2>
+          </div>
+          <ul>
+              <li><a href="userProfile.html">Account Details</a></li>
+              <li><a href="userDietaryPreference.html">User Preferences</a></li>
+              <li><a href="#">Logout</a></li>
+          </ul>
+      </aside>
+      <main>
+          <h1>Update Account Details</h1>
+          <form>
+              <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" id="username" name="username">
+              </div>
+              <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" >
+              </div>
+              <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" >
+              </div>
+              <div class="form-group">
+                  <label for="password">Enter password</label>
+                  <input type="password" id="password" name="password">
+              </div>
+              <button type="submit">Save Changes</button>
+          </form>
+      </main>
   </div>
-  <div class="user-info">
-    <img src="https://via.placeholder.com/60" alt="Profile Picture">
-    <h2>Sarah</h2>
-  </div>
-  <div class="sidebar">
-    <ul>
-      <li><a href="userDietaryPreferences.html">User Preferences</a></li>
-      <li><a href="#">Saved Recipe</a></li>
-      <li><a href="#">Logout</a></li>
-    </ul>
-  </div>
-  <div class="form-container">
-    <h2>Update Account Details</h2>
-    <form>
-      <div class="form-group">
-        <label for="username">Enter username:</label>
-        <input type="text" id="username" name="username" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Enter email address:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">Enter phone number:</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Enter password:</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <button type="submit" class="button">Save Changes</button>
-    </form>
-  </div>
-</div>
 </body>
 </html>
