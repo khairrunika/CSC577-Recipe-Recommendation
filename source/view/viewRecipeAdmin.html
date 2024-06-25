@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Rocket</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: #e7dfd1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-icon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #333;
+}
+
+.search-recipe {
+    margin: 20px 0;
+}
+
+.search-recipe label {
+    font-weight: bold;
+}
+
+.search-recipe input {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.insert-recipe {
+    display: block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.edit-btn {
+    color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Recipe Rocket.</h1>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Recipe</a>
+        </nav>
+        <div class="user-icon">
+            <img src="user-icon.png" alt="User Icon">
+        </div>
+    </header>
+    <main>
+        <h2>View Recipe</h2>
+        <div class="search-recipe">
+            <label for="recipe-id">Search Recipe:</label>
+            <input type="text" id="recipe-id" placeholder="Enter recipe ID">
+        </div>
+        <button class="insert-recipe">Insert New Recipe</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Recipe ID</th>
+                    <th>Recipe Name</th>
+                    <th>Ingredients</th>
+                    <th>Cooking Instructions</th>
+                    <th>Cooking Time</th>
+                    <th>Cuisine Types</th>
+                    <th>Meal Types</th>
+                    <th>Calories</th>
+                    <th>Dietary Tags</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1001</td>
+                    <td>Spaghetti Carbonara</td>
+                    <td>Spaghetti (200g), Pancetta or bacon (100g), Eggs (2), Parmesan cheese (50g), Black pepper</td>
+                    <td>
+                        1. Cook spaghetti according to package instructions.<br>
+                        2. In a pan, cook pancetta or bacon until crispy. Drain excess fat.<br>
+                        3. In a bowl, whisk eggs, grated Parmesan cheese, and black pepper.<br>
+                        4. Drain cooked spaghetti and toss in the egg mixture until coated.<br>
+                        5. Add cooked pancetta or bacon and mix well. Serve immediately.
+                    </td>
+                    <td>20 mins</td>
+                    <td>Italian</td>
+                    <td>Lunch</td>
+                    <td>450</td>
+                    <td>None</td>
+                    <td>url</td>
+                    <td>
+                        <button class="edit-btn">✏️</button>
+                        <button class="delete-btn">🗑️</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
