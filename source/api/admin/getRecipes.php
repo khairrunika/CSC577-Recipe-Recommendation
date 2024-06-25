@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     echo json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]);
     exit();
 }
-$sql = "SELECT r.recipe_name, r.recipe_cookingTime, c.cuisine_type, m.meal_type, r.recipe_calories
+$sql = "SELECT r.recipe_id, r.recipe_name, r.recipe_cookingTime, c.cuisine_type, m.meal_type, r.recipe_calories
 FROM recipe r
 JOIN cuisine c ON r.cuisine_id = c.cuisine_id
 JOIN meal m ON r.meal_id = m.meal_id;

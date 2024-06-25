@@ -16,7 +16,7 @@
         <title>Recipe Rocket: List Of Recipes</title>
     </head>
     <body>
-        <div class="row">
+        <div class="row header">
             <header class="site-navbar" role="banner">
 
                 <div class="container">
@@ -51,6 +51,9 @@
         <div class="row main-content">
           <div class="container my-5">  
             <div class="row g-4 justify-content-center">
+              <div class="col-10 d-flex justify-content-end mb-3">
+                <button class="btn btn-success" onclick="location.href='../Admin/AddNewRecipe.html'">Add New Recipe</button>
+            </div>
                 <div class="col-10" id="tableListOfRecipes">
                     <table id="listOfRecipes" class="table table-striped">
                         <thead class="alpha-grey">
@@ -61,6 +64,7 @@
                                 <th class="lato-bold-14 co-1">Cuisine Type</th>
                                 <th class="lato-bold-14">Meal Type</th>
                                 <th class="lato-bold-14">Calories</th>
+                                <th class="lato-bold-14">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,6 +73,20 @@
                     </table>
                 </div>
               </div>
+            </div>
+        </div>
+
+        <!-- Success Popup -->
+          <div id="popup_success" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <h5 class="pt-2" id="popupSuccess"></h5>
+                        <div class="form-group pt-2 text-center">
+                            <button type="button" class="btn bg-primary" data-dismiss="modal" id="btnPopupSuccess">Ok</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

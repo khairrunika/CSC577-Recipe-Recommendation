@@ -80,14 +80,22 @@ body{
 }
 
 /* Navigation Bar */
+.header{
+  height: 7rem;
+}
 .site-navbar {
     margin-bottom: 0px;
     z-index: 1999;
     position: fixed;
-    top: 2rem;
     width: 100%;
+    background-color: white;
+    padding: 15px 0;
+    box-shadow: 0 4px 2px -2px gray;
     
    }
+   .site-navbar .site-logo a {
+    color: black;
+}
     .site-navbar.transparent {
       background: transparent; }
     .site-navbar.absolute {
@@ -114,7 +122,7 @@ body{
         display: inline-block; }
         .site-navbar .site-navigation .site-menu > li > a {
           padding: 10px 0px;
-          color: #fff;
+          color: black;
           font-size: 16px;
           text-decoration: none !important; }
           .site-navbar .site-navigation .site-menu > li > a > span {
@@ -362,7 +370,3 @@ body{
           width: auto; }
           .site-mobile-menu .site-nav-wrap[data-class="social"] > li:first-child a {
             padding-left: 15px !important; }
-/* dashboard */
-.main-content {
-  padding-top: 100px; /* Adjust this value based on the height of your header */
-}
