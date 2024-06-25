@@ -17,8 +17,8 @@ if ($conn->connect_error) {
 if (isset($_GET['query'])) {
     $searchQuery = $_GET['query'];
 
-    // SQL query to search for recipes
-    $sql = "SELECT * FROM recipe WHERE recipe_name LIKE '%" . $searchQuery . "%'";
+    // SQL query to search for recipes based on recipe_name or recipe_ingredient
+    $sql = "SELECT * FROM recipe WHERE recipe_name LIKE '%" . $searchQuery . "%' OR recipe_ingredient LIKE '%" . $searchQuery . "%'";
 
     $result = $conn->query($sql);
 
