@@ -38,8 +38,12 @@
         margin-left: 10px;
         width: 24px;
         height: 24px;
-        background-color: gray; /* Placeholder for icons */
-        border-radius: 50%;
+      }
+
+      .icons .icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       main {
@@ -63,6 +67,25 @@
       .sidebar ul li {
         margin: 10px 0;
         cursor: pointer;
+        position: relative;
+      }
+
+      .sidebar ul li .dropdown-content {
+        display: none;
+        position: relative;
+        left: 0;
+        background-color: #f9f9f9;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        z-index: 1;
+        width: 100%;
+      }
+
+      .sidebar ul li .dropdown-content a {
+        text-decoration: none;
+        display: block;
+        color: black;
+        padding: 5px 0;
       }
 
       .content {
@@ -119,29 +142,46 @@
         <a href="search.html">Search</a>
       </nav>
       <div class="icons">
-        <span
-          class="icon chef-hat"
-          img
-          src="../../../assets/images/bookrecipe.png"
-        ></span>
-        <span
-          class="icon user"
-          img
-          src="../../../assets/images/profile.png"
-        ></span>
+        <span class="icon chef-hat"
+          ><img src="../../../assets/images/bookrecipe.png"
+        /></span>
+        <span class="icon user"
+          ><img src="../../../assets/images/profile.png"
+        /></span>
       </div>
     </header>
     <main>
       <section class="sidebar">
         <h2>Recipes</h2>
         <ul>
-          <li>Diet and Health <span>+</span></li>
-          <li>Cuisine Type <span>+</span></li>
-          <li>Meal Type <span>+</span></li>
+          <li>
+            Diet and Health <span class="toggle-dropdown">+</span>
+            <div class="dropdown-content">
+              <a href="#">Low Carb</a>
+              <a href="#">High Protein</a>
+              <a href="#">Vegan</a>
+            </div>
+          </li>
+          <li>
+            Cuisine Type <span class="toggle-dropdown">+</span>
+            <div class="dropdown-content">
+              <a href="#">Italian</a>
+              <a href="#">Chinese</a>
+              <a href="#">Mexican</a>
+            </div>
+          </li>
+          <li>
+            Meal Type <span class="toggle-dropdown">+</span>
+            <div class="dropdown-content">
+              <a href="#">Breakfast</a>
+              <a href="#">Lunch</a>
+              <a href="#">Dinner</a>
+            </div>
+          </li>
         </ul>
       </section>
       <section class="content">
-        <div class="search-bar" img src="/assets/images/search.png">
+        <div class="search-bar">
           <input type="text" placeholder="Search for recipes" />
           <button>Sort by: Latest</button>
         </div>
@@ -186,5 +226,14 @@
         </div>
       </section>
     </main>
+    <script>
+      document.querySelectorAll(".toggle-dropdown").forEach((item) => {
+        item.addEventListener("click", () => {
+          const dropdownContent = item.nextElementSibling;
+          dropdownContent.style.display =
+            dropdownContent.style.display === "block" ? "none" : "block";
+        });
+      });
+    </script>
   </body>
 </html>
