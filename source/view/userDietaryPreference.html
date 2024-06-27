@@ -39,8 +39,12 @@
             margin-left: 10px;
             width: 24px;
             height: 24px;
-            background-color: gray; /* Placeholder for icons */
-            border-radius: 50%;
+            }
+
+            .icons .icon img {
+                width: 100%;
+                height: 100%
+                object-fit: contain;
             }
 
 
@@ -63,9 +67,14 @@
             aside .user-icon {
             width: 50px;
             height: 50px;
-            background-color: #ddd;
-            border-radius: 50%;
             margin: 0 auto;
+            overflow: hidden;
+            }
+
+            aside .user-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             aside h2 {
@@ -138,18 +147,15 @@
               <a href="search.html">Search</a>
             </nav>
             <div class="icons">
-              <span
-                class="icon chef-hat"
-                img
-                src="/assets/images/bookrecipe.png"
-              ></span>
-              <span class="icon user" img src="/assets/images/profile.png"></span>
-            </div>
+                <span class="icon"><img src="../../assets/images/bookrecipe.png" alt="chef hat"></span>
+                <span class="icon"><img src="../../../assets/images/profile.png" alt="user profile"></span>
+              </div>
           </header>
           <div class="container">
             <aside>
                 <div class="user-info">
                     <div class="user-icon"></div>
+                     <img src="../../assets/images/profile.png" alt="user profile">
                     <h2>Sarah</h2>
                 </div>
                 <ul>
