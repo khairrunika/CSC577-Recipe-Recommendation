@@ -1,136 +1,136 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!-- meta tags-->
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <!-- meta tags-->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- title -->
-        <title>Register | Recipe Rocket</title>
-        
-        <!-- Google Fonts link -->
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- title -->
+    <title>Register | Recipe Rocket</title>
     
-        <style>
-            *,
-            *::before,
-            *::after {
-                padding: 0;
-                margin: 0;
-                box-sizing: border-box;
-            }
-            body,
-            input,
-            button,
-            h2,
-            p,
-            a {
-                font-family: "Poppins", sans-serif;
-            }
-            main {
-                width: 100%;
-                min-height: 100vh;
-                background-color: #ff8c6b;
-                padding: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .form-section {
-                min-height: 100vh;
-                background: #EBE5D6;
-                padding: 40px;
-            }
-            .container {
-                max-width: 890px;
-                margin: 0 auto;
-            }
-            img {
-                border-top-left-radius: 8px;
-                border-bottom-left-radius: 8px;
-                width: 180%;
-                height:100%;
-            }       
-            .form-image {
-                width: 50%;
-            }
-            .form-content {
-                flex-basis: 50%;
-                padding: 3em 3.5em;
-                background: #fff;
-                box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
-                border-top-right-radius: 8px;
-                border-bottom-right-radius: 8px;
-            }
-            .form-wrapper {
-                display: flex;
-                margin: 40px 0;
-            }
-            form {
-                margin: 30px 0;
-            }
-            h2 {
-                text-align: center;
-                color: black;
-                font-size: 25px;
-                margin-bottom: 5px;
-                font-weight: 600;
-            }
-            p{
-                text-align: center;
-            }
-            input {
-                margin-bottom: 15px;
-                font-size: 16px;
-                color: #757575;
-                padding: 14px 20px;
-                width: 100%;
-                border: 1px solid #e5e5e5;
-                transition: 0.3s all ease;
-            }
-            input:focus {
-                border: 1.5px solid #00c16e;
-            }
-            button {
-                font-size: 18px;
-                color: #fff;
-                width: 100%;
-                background: #5C4724;
-                padding: 14px 15px;
-                font-weight: 500;
-                transition: 0.3s ease;
-            }
-            button:hover {
-                background: #2f302f;
-                color: white;
-            }
-        </style>
-    </head>
+    <!-- Google Fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        *,
+        *::before,
+        *::after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body,
+        input,
+        button,
+        h2,
+        p,
+        a {
+            font-family: "Poppins", sans-serif;
+        }
+        main {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #ff8c6b;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-section {
+            min-height: 100vh;
+            background: #EBE5D6;
+            padding: 40px;
+        }
+        .container {
+            max-width: 890px;
+            margin: 0 auto;
+        }
+        img {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            width: 180%;
+            height:100%;
+        }       
+        .form-image {
+            width: 50%;
+        }
+        .form-content {
+            flex-basis: 50%;
+            padding: 3em 3.5em;
+            background: #fff;
+            box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .form-wrapper {
+            display: flex;
+            margin: 40px 0;
+        }
+        form {
+            margin: 30px 0;
+        }
+        h2 {
+            text-align: center;
+            color: black;
+            font-size: 25px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        p{
+            text-align: center;
+        }
+        input {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #757575;
+            padding: 14px 20px;
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            transition: 0.3s all ease;
+        }
+        input:focus {
+            border: 1.5px solid #00c16e;
+        }
+        button {
+            font-size: 18px;
+            color: #fff;
+            width: 100%;
+            background: #5C4724;
+            padding: 14px 15px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+        button:hover {
+            background: #2f302f;
+            color: white;
+        }
+    </style>
+</head>
 
-    <body>
-        <section class="form-section">
-            <div class="container">
-                <div class="form-wrapper">
-                    <div class="form-image">
-                        <img src="/assets/images/food2.jpg" alt="" />
-                    </div>
-                    <div class="form-content">
-                        <h2>Register Now</h2>
-                        <form action="" method="post">
-                            <input type="text" name="name" placeholder="Enter username" required/>
-                            <input type="email" name="email" placeholder="Enter email address" required/>
-                            <input type="text" name="phoneNum" placeholder="Enter phone number" required/>
-                            <input type="password" name="pass" placeholder="Enter password" required/>
-                            <input type="password" name="confirmPass" placeholder="Confirm password" required/>
-                            <button class="btn" name="register" type="submit">Register</button>
-                        </form>
-                        <div class="social-icons">
-                            <p>Already have account? <a href="userLogin.html">Login now</a>.</p>
-                        </div>
+<body>
+    <section class="form-section">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-image">
+                    <img src="../../../assets/images/food2.jpg" alt="" />
+                </div>
+                <div class="form-content">
+                    <h2>Register Now</h2>
+                    <form action="../../api/user/register.php" method="post">
+                        <input type="text" name="name" placeholder="Enter username" required/>
+                        <input type="email" name="email" placeholder="Enter email address" required/>
+                        <input type="text" name="phoneNum" placeholder="Enter phone number" required/>
+                        <input type="password" name="pass" placeholder="Enter password" required/>
+                        <input type="password" name="confirmPass" placeholder="Confirm password" required/>
+                        <button class="btn" name="register" type="submit">Register</button>
+                    </form>
+                    <div class="social-icons">
+                        <p>Already have an account? <a href="userLogin.html">Login now</a>.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </body>
+        </div>
+    </section>
+</body>
 </html>
