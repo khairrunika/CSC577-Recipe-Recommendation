@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- meta tags-->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- title -->
+        <title>Dietary Preferences | Recipe Rocket</title>
+        
+        <!-- Google Fonts link -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+        
+        <style>
+            body {
+                font-family: "Poppins", sans-serif;  /* Set font family */
+                background-color: #eee6d4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                display: flex;
+                background-color: #ffffff;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                max-width: 900px;
+                width: 100%;
+                max-height: 500px;
+                height: 100%;
+            }
+            .form-section {
+                padding: 40px;
+                padding-left: 50px;
+                padding-right: 50px;
+                flex: 1;
+            }
+            .form-section h1 {
+                font-size: 24px;
+                font-weight: 700; /* Bold */
+                margin-top: 50px;
+                margin-bottom: 10px;
+            }
+            .form-section p {
+                margin-bottom: 30px;
+                font-weight: 300; /* Light */
+            }
+            .form-section .preferences {
+                display: flex;
+                justify-content: space-between;
+            }
+            .form-section .preferences .column {
+                display: flex;
+                flex-direction: column;
+            }
+            .form-section label {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                font-size: 14px;
+                color: #333;
+                font-weight: 300; /* Light */
+                cursor: pointer;
+            }
+            .form-section input[type="checkbox"] {
+                display: none;
+            }
+            .form-section input[type="checkbox"] + span {
+                display: inline-block;
+                width: 16px; /* Thinner */
+                height: 16px; /* Thinner */
+                margin-right: 10px;
+                border: 1px solid #6e4b25; /* Thinner border */
+                box-sizing: border-box;
+                position: relative;
+            }
+            .form-section input[type="checkbox"]:checked + span::after {
+                content: '';
+                display: block;
+                width: 8px; /* Smaller checkmark */
+                height: 8px; /* Smaller checkmark */
+                background-color: #6e4b25;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 2px;
+            }
+            .form-section input[type="submit"] {
+                display: block;
+                background-color: #6e4b25;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 30px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 500; /* Semibold */
+                margin-top: 20px;
+                width: 100%;
+                max-width: 350px;
+                font-family: "Poppins", sans-serif; /* Ensure Poppins is applied */
+            }
+            .image-section {
+                background: url('/assets/images/food2.jpg') center center/cover no-repeat;
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-section">
+                <h1>What are your preferences?</h1>
+                <p>Select your dietary preferences:</p>
+                <form action="" method="post">
+                    <div class="preferences">
+                        <div class="column">
+                            <label><input type="checkbox" name="preferences[]" value="vegetarian"><span></span> Vegetarian</label>
+                            <label><input type="checkbox" name="preferences[]" value="vegan"><span></span> Vegan</label>
+                            <label><input type="checkbox" name="preferences[]" value="gluten-free"><span></span> Gluten-Free</label>
+                            <label><input type="checkbox" name="preferences[]" value="dairy-free"><span></span> Dairy-Free</label>
+                        </div>
+                        <div class="column">
+                            <label><input type="checkbox" name="preferences[]" value="low-carb"><span></span> Low-Carb</label>
+                            <label><input type="checkbox" name="preferences[]" value="low-calorie"><span></span> Low-Calorie</label>
+                            <label><input type="checkbox" name="preferences[]" value="nut-free"><span></span> Nut-Free</label>
+                            <label><input type="checkbox" name="preferences[]" value="keto"><span></span> Keto</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="image-section"></div>
+        </div>
+    </body>
+</html>
