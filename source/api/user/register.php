@@ -8,13 +8,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['name'];
     $email = $_POST['email'];
     $phoneNum = $_POST['phoneNum'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    // $password = $_POST['pass'];
-    // $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash password for security
+    $password = $_POST['pass'];
+    $confirmPassword = $_POST['confirmPass'];
     $preferences = "None"; // Example default value for preferences
 
-
+    // Check if passwords match
+    if ($password !== $confirmPassword) {
+        echo "<script>
+                alert('Passwords do not match!');
+                window.location.href = '../../view/user/register.html';
+              </script>";
+        exit;
+    }
 
     // Prepare SQL query to insert data into consumer table
     $sql = "INSERT INTO consumer (consumer_username, consumer_email, consumer_phoneNumber, consumer_password, consumer_preferences) 
@@ -22,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Use prepared statements for security and to prevent SQL injection
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $username, $email, $phoneNum, $hashed_password, $preferences);
+    $stmt->bind_param("sssss", $username, $email, $phoneNum, $password, $preferences);
     
     // Execute the statement
     if ($stmt->execute()) {
@@ -42,4 +47,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
-

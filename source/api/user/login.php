@@ -1,22 +1,26 @@
 <?php
 session_start();
 
+// Allow from any origin
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Content-Type: application/json');
 
+// Handle OPTIONS request for preflight
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
+// Database connection
 $user = 'root';
 $pass = '';
-$db = 'recipe_rocket';
-$port = 3306;
+$conn = 'recipe_rocket';
+$port = 3306; // Add this line to specify the port
 
-$conn = new mysqli('localhost', $user, $pass, $db, $port);
+$conn = new mysqli('localhost', $user, $pass, $conn, $port) or die("Unable to connect to database");
 
+// Check connection
 if ($conn->connect_error) {
     echo json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]);
     exit();
@@ -24,33 +28,18 @@ if ($conn->connect_error) {
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($data['username']) && isset($data['password'])) {
-    $username = $data['username'];
-    $password = $data['password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $stmt = $conn->prepare("SELECT consumer_id, consumer_username, consumer_password FROM consumer WHERE consumer_username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
+    $sql = "SELECT consumer_id FROM consumer WHERE consumer_username = '$username' AND consumer_password = '$password'";
+    $result = mysqli_query($conn, $sql);
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($consumer_id, $consumer_username, $consumer_password);
-        $stmt->fetch();
-
-        if (password_verify($password, $consumer_password)) {
-            $_SESSION['consumer_id'] = $consumer_id;
-            echo json_encode(["success" => true, "message" => "Login successful."]);
-        } else {
-            echo json_encode(["success" => false, "message" => "Invalid password."]);
-        }
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['login_user'] = $username;
+        echo json_encode(['status' => 'success', 'message' => 'Login successful']);
     } else {
-        echo json_encode(["success" => false, "message" => "No user found with that username."]);
+        echo json_encode(['status' => 'error', 'message' => 'Invalid username or password']);
     }
-
-    $stmt->close();
-} else {
-    echo json_encode(["success" => false, "message" => "Please enter both username and password."]);
 }
-
-$conn->close();
 ?>
