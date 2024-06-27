@@ -1,9 +1,9 @@
 <?php
 // Database connection details
 $servername = "localhost";
-$username = "root"; // Replace with your MySQL username
-$password = ""; // Replace with your MySQL password
-$dbname = "recipe_rocket"; // Replace with your database name
+$username = "root"; 
+$password = ""; 
+$dbname = "recipe_rocket"; 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

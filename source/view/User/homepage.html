@@ -17,7 +17,7 @@
     <div class="flex-1 flex justify-center space-x-6 text-lg">
       <a href="homepage.html" class="text-gray-600 hover:text-gray-800">Home</a>
       <a href="viewRecipe.html" class="text-gray-600 hover:text-gray-800">Recipe</a>
-      
+   
     </div>
     <div class="flex space-x-6 text-lg">
       <a href="manageSaveRecipe.html" class="text-gray-600 hover:text-gray-800 flex items-center">
@@ -25,6 +25,9 @@
       </a>
       <a href="profile.html" class="text-gray-600 hover:text-gray-800 flex items-center">
         <img aria-hidden="true" alt="user" src="img/user.png" class="w-6 h-6 object-contain"/>
+      </a>
+      <a href="userLogin.html" class="text-gray-600 hover:text-gray-800 flex items-center">
+        <img aria-hidden="true" alt="user" src="img/logout.png" class="w-6 h-6 object-contain"/>
       </a>
     </div>
   </nav>
@@ -72,14 +75,16 @@
                 recipeCard.classList.add('border', 'border-gray-300', 'p-4', 'mb-4', 'rounded', 'shadow-sm');
                 recipeCard.innerHTML = `
                   <h2 class="text-xl font-semibold text-gray-800">${recipe.recipe_name}</h2>
-                  <p class="text-gray-600">${recipe.recipe_cookingInstruction}</p>
+                  <p class="text-gray-600">Ingredients:${recipe.recipe_ingredient}</p>
                   <p class="text-gray-600">Cooking Time: ${recipe.recipe_cookingTime}</p>
                   <p class="text-gray-600">Calories: ${recipe.recipe_calories}</p>
+                  <a href="viewRecipeDetails.php?recipe_id=${recipe.recipe_id}" class="mt-2 inline-block bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600">View Recipe</a>
                 `;
                 searchResults.appendChild(recipeCard);
               });
             } else {
-              const noResultsMessage = document.createElement('p');
+              const noResultsMessage =
+document.createElement('p');
               noResultsMessage.textContent = 'No recipes found.';
               searchResults.appendChild(noResultsMessage);
             }
