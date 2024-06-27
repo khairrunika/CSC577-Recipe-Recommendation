@@ -1,49 +1,54 @@
-<?php
-// Include the database connection file
-require_once "../../connect.php";
-
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
-    $username = $_POST['name'];
-    $email = $_POST['email'];
-    $phoneNum = $_POST['phoneNum'];
-    $password = $_POST['pass'];
-    $confirmPassword = $_POST['confirmPass'];
-    $preferences = "None"; // Example default value for preferences
-
-    // Check if passwords match
-    if ($password !== $confirmPassword) {
-        echo "<script>
-                alert('Passwords do not match!');
-                window.location.href = '../../view/user/register.html';
-              </script>";
-        exit;
-    }
-
-    // Prepare SQL query to insert data into consumer table
-    $sql = "INSERT INTO consumer (consumer_username, consumer_email, consumer_phoneNumber, consumer_password, consumer_preferences) 
-            VALUES (?, ?, ?, ?, ?)";
-    
-    // Use prepared statements for security and to prevent SQL injection
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $username, $email, $phoneNum, $password, $preferences);
-    
-    // Execute the statement
-    if ($stmt->execute()) {
-        // Redirect to homepage and show success message
-        echo "<script>
-                alert('Registration successful!');
-                window.location.href = '../../view/user/homepage.html';
-              </script>";
-        exit;
-    } else {
-        // Handle SQL execution error
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-}
+include "config.php";
+	
+	//define all required information
+	if(isset($_POST["register"])){
+		
+		$username = $_POST["name"];
+		$email = $_POST["email"];
+		$phone = $_POST["phoneNum"];
+		$password = $_POST["pass"];
+		$confirmPassword = $_POST["confirmPass"];
+		
+		//SQL command or query
+		$sql = "SELECT * FROM consumer WHERE consumer_username = '$username'";
+		
+		//Send SQL command to MySQL using database connection
+		$sendsql = mysqli_query($connect, $sql);
+		
+		//check if SQL successfully sent
+		if($sendsql){
+			//check if there are rows that matches the given condition
+			if(mysqli_num_rows($sendsql) > 0){
+				echo "<script> 
+							alert('Username already exist. Please insert another username');
+					  </script>";
+			}
+			else{
+				if($password == $confirmPassword)
+				{
+					$sql = "INSERT INTO consumer (consumer_username, consumer_email, consumer_phoneNumber, consumer_password) 
+							  VALUES ('$username','$email','$phone','$password')";
+				
+					$sendsql = mysqli_query($connect, $sql);
+				
+					if($sendsql){
+						echo "<script> 
+								alert('Congrats! Your registration was successful!');
+								window.location.href='index.php';
+							  </script>";
+					}
+					else{
+						echo "<script> 
+								alert('Sorry, your registration failed. Please try again!');
+							  </script>";
+					}
+				}
+				else{
+					echo "<script> 
+								alert('Password not match!');
+						  </script>";
+				}
+			}
+		}
+	}
 ?>
