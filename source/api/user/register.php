@@ -1,4 +1,5 @@
-include "config.php";
+<?php
+	include "config.php";
 	
 	//define all required information
 	if(isset($_POST["register"])){
@@ -34,7 +35,7 @@ include "config.php";
 					if($sendsql){
 						echo "<script> 
 								alert('Congrats! Your registration was successful!');
-								window.location.href='/recipe_rocket/source/view/User/homepage.html';
+								window.location.href='/CSC577-Recipe-Recommendation/source/view/User/homepage.html';
 							  </script>";
 					}
 					else{
