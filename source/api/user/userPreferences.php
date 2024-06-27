@@ -39,7 +39,7 @@
 		if ($sendsql) {
 			echo "<script> 
 					alert('Preferences updated successfully!');
-					window.location.href='homepage.html'; // Redirect to dashboard or relevant page
+					window.location.href='/recipe_rocket/source/view/User/homepage.html'; // Redirect to dashboard or relevant page
 				  </script>";
 		} else {
 			echo "<script> 
