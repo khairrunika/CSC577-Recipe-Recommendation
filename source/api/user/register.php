@@ -35,7 +35,7 @@
 					if($sendsql){
 						echo "<script> 
 								alert('Congrats! Your registration was successful!');
-								window.location.href='index.php';
+								window.location.href='/recipe_rocket/source/view/User/homepage.html';
 							  </script>";
 					}
 					else{
