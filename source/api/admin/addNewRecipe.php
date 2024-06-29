@@ -74,7 +74,7 @@
 
     <div class="container mx-auto mt-10 px-6">
         <h1 class="text-3xl font-bold mb-6">Insert New Recipe</h1>
-        <form action="/../source/api/admin/addNewRecipe.php" method="post" class="bg-white p-6 rounded shadow-md">
+        <form action="" method="post" class="bg-white p-6 rounded shadow-md">
             <div class="grid grid-cols-2 gap-6">
                 <div class="flex flex-col space-y-4">
                     <div>
@@ -87,12 +87,72 @@
                     </div>
                     <div>
                         <label class="block text-gray-700">Enter cuisine types</label>
-                        <input type="text" name="cuisine_types" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                    </div>
+                        <select name="cuisine_types" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                            <option value="">Select cuisine type</option>
+                            <?php
+								// PHP code to fetch cuisine types from database
+								$hostname = "localhost";
+								$username = "root";
+								$password = "";
+								$dbname = "recipe_rocket";
+
+								// Create connection
+								$conn = new mysqli($hostname, $username, $password, $dbname);
+
+								// Check connection
+								if ($conn->connect_error) {
+									die("Connection failed: " . $conn->connect_error);
+								}
+
+								// Fetch cuisine types
+								$sql = "SELECT cuisine_type FROM cuisine";
+								$result = $conn->query($sql);
+
+								if (!$result) {
+									echo "Error: " . $conn->error;
+								} else {
+									if ($result->num_rows > 0) {
+										while ($row = $result->fetch_assoc()) {
+											echo "<option value='" . $row['cuisine_type'] . "'>" . $row['cuisine_type'] . "</option>";
+										}
+									} else {
+										echo "No cuisine types found.";
+									}
+								}
+
+								$conn->close();
+							?>
+                        </select>
+					</div>
                     <div>
                         <label class="block text-gray-700">Enter meal types</label>
-                        <input type="text" name="meal_types" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                    </div>
+                        <select name="meal_types" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                            <option value="">Select meal type</option>
+                            <?php
+								// PHP code to fetch meal types from database
+								$conn_meal = new mysqli($hostname, $username, $password, $dbname);
+
+								// Check connection
+								if ($conn_meal->connect_error) {
+									die("Connection failed: " . $conn_meal->connect_error);
+								}
+
+								// Fetch meal types
+								$sql_meal = "SELECT meal_type FROM meal";
+								$result_meal = $conn_meal->query($sql_meal);
+
+								if ($result_meal->num_rows > 0) {
+									while ($row_meal = $result_meal->fetch_assoc()) {
+										echo "<option value='" . $row_meal['meal_type'] . "'>" . $row_meal['meal_type'] . "</option>";
+									}
+								} else {
+									echo "No meal types found.";
+								}
+
+								$conn_meal->close();
+                            ?>
+                        </select>
+					</div>
                     <div>
                         <label class="block text-gray-700">Enter calories</label>
                         <input type="text" name="calories" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
@@ -114,8 +174,8 @@
                 </div>
             </div>
             <div class="flex justify-between mt-4">
-                <button type="submit" name="/../source/api/admin/addRecipe.php" class="px-4 py-2 bg-green-500 text-white font-bold rounded-none hover:bg-green-700">Add Recipe</button>
-                <a href="ListOfRecipes.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-none hover:bg-gray-700">Back</a>
+                <button type="submit" name="addRecipe" class="px-4 py-2 bg-green-500 text-white font-bold rounded-none hover:bg-green-700">Add Recipe</button>
+                <a href="listOfRecipe.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-none hover:bg-gray-700">Back</a>
             </div>
         </form>
     </div>
