@@ -25,12 +25,15 @@
         }
         .nav {
             display: flex;
+            align-items: center; /* Aligns items vertically centered */
             gap: 20px;
         }
         .nav a {
             text-decoration: none;
             color: #000;
             font-size: 18px;
+            padding-top: 15px; /* Adds padding to the top */
+            padding-bottom: 5px; /* Adds padding to the bottom */
         }
         .container {
             display: flex;
@@ -115,7 +118,7 @@
         <div class="text-2xl font-bold text-black-600">Recipe Rocket</div>
         <div class="space-x-4">
             <a href="Dashboard.html" class="text-gray-700 hover:text-purple-600 transition">Dashboard</a>
-            <a href="#" class="text-gray-700 hover:text-purple-600 transition">Recipe</a>
+            <a href="ListOfRecipes.html" class="text-gray-700 hover:text-purple-600 transition">Recipe</a>
         </div>
         <div class="flex space-x-6 text-lg">
             <a href="#" class="text-gray-600 hover:text-gray-800 flex items-center">
@@ -124,6 +127,9 @@
             <a href="\view\Admin\adminProfile.html" class="text-gray-600 hover:text-gray-800 flex items-center">
               <img aria-hidden="true" alt="user" src="../../../assets/images/user.png " class="w-6 h-6 object-contain"/>
             </a>
+            <a href="../../api/admin/logout.php" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <img aria-hidden="true" alt="user" src="../User/img/logout.png" class="w-6 h-6 object-contain"/>
+              </a>
         </div>
     </nav>
     <div class="container">
@@ -132,24 +138,39 @@
             <ul>
                 <li><a href="adminProfile.html" class="active">Admin Details</a></li>
                 <li><a href="addNewAdmin.html">Add New Admin</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="Dashboard.html">Back to Dashboard</a></li>
             </ul>
         </div>
         <div class="content">
             <h3><b>Admin Account Details</b></h3>
-            <form>
+            <form id="adminForm">
                 <div class="form-group">
-                    Username:
-                    <input type="text" placeholder="Enter username">
-                    <!-- <input type="text" placeholder="Enter phone number"> -->
+                    <label>Name:</label>
+                    <input type="text" id="name" readonly>
                 </div>
-                <!-- <div class="form-group">
-                    <input type="email" placeholder="Enter email address">
-                    <input type="password" placeholder="Enter password">
-                </div> -->
-                <!-- <button type="submit" class="btn">Save Changes</button> -->
+                <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" id="username" readonly>
+                </div>
             </form>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch admin details
+            fetch('../../api/admin/fetchAdmin.php')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Add this line to debug
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        document.getElementById('name').value = data.admin_name;
+                        document.getElementById('username').value = data.admin_username;
+                    }
+                })
+                .catch(error => console.error('Error fetching admin details:', error));
+        });
+    </script>
 </body>
 </html>
