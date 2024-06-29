@@ -149,6 +149,24 @@
             background-color: #f0f0f0;
         }
     </style>
+	<script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dropdownIcon = document.getElementById('dropdownIcon');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            dropdownIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (e) => {
+                if (!dropdownIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </head>
 
 <body class="bg-gray-100">
@@ -160,11 +178,11 @@
         </div>
         <div class="relative">
             <div class="dropdown">
-                <a href="" class="text-gray-600 hover:text-gray-800 flex items-center">
-                    <img aria-hidden="true" alt="user" src="../../../assets/images/user.png" class="w-6 h-6 object-contain" />
+                <a href="" id="dropdownIcon" class="text-gray-600 hover:text-gray-800 flex items-center">
+                    <img aria-hidden="true" alt="user" src="../../../assets/images/user.png" class="w-6 h-6 object-contain"/>
                 </a>
                 <div class="dropdown-menu absolute bg-white rounded-md shadow-lg z-20">
-                    <a href="..\Admin\adminProfile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                    <a href="../Admin/adminProfile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
                     <a href="../../api/admin/logout.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
                 </div>
             </div>
@@ -240,8 +258,8 @@
 				</div>
 			</div>
 			<div class="flex justify-between mt-4">
-				<button type="submit" name="editRecipe" class="px-4 py-2 bg-gradient-to-r from-green-400 to-green-600 text-white font-bold rounded-lg hover:from-green-500 hover:to-green-700">Update Recipe</button>
-				<a href="ListOfRecipes.html" class="px-4 py-2 bg-gradient-to-r from-gray-400 to-gray-600 text-white font-bold rounded-lg hover:from-gray-500 hover:to-gray-700">Back</a>
+				<button type="submit" name="editRecipe" class="px-4 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-700">Update Recipe</button>
+				<a href="ListOfRecipes.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-700">Back</a>
 			</div>
 		</form>
 	</div>

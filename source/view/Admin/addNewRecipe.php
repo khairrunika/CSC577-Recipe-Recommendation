@@ -55,12 +55,14 @@
 						{	
 							echo "<script> 
 										alert('New recipe added successfully.');
-								  </script>";				
+								  </script>";
+										
 						}
 						else 
 							echo "<script> 
 										alert('Sorry, new recipe failed to added!');
 								  </script>";
+					
 				} else{
 					echo "<script> 
 								alert('Your file is too big!');
@@ -70,7 +72,8 @@
 				echo "<script> 
 							alert('There was an error uploading your file!');
 					  </script>";
-			} 		
+			} 
+				
 		} else {
 			echo "<script> 
 						alert('You cannot upload this type of file!');
@@ -117,9 +120,6 @@
             border: 1px solid #ccc;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
         .dropdown-menu a {
             display: block;
             padding: 8px 12px;
@@ -132,6 +132,24 @@
             background-color: #f0f0f0;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dropdownIcon = document.getElementById('dropdownIcon');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+
+            dropdownIcon.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            // Close the dropdown if the user clicks outside of it
+            window.addEventListener('click', (e) => {
+                if (!dropdownIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </head>
 <body class="bg-gray-100">
     <nav class="shadow-md p-4 flex justify-between items-center" style="background-color: #ebe5d6;">
@@ -142,11 +160,11 @@
         </div>
         <div class="relative">
             <div class="dropdown">
-                <a href="" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <a href="" id="dropdownIcon" class="text-gray-600 hover:text-gray-800 flex items-center">
                     <img aria-hidden="true" alt="user" src="../../../assets/images/user.png" class="w-6 h-6 object-contain"/>
                 </a>
                 <div class="dropdown-menu absolute bg-white rounded-md shadow-lg z-20">
-                    <a href="\view\Admin\adminProfile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                    <a href="../Admin/adminProfile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
                     <a href="../../api/admin/logout.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
                 </div>
             </div>
@@ -159,114 +177,114 @@
             <div class="grid grid-cols-2 gap-6">
                 <div class="flex flex-col space-y-4">
                     <div>
-                        <label class="block text-gray-700">Enter recipe name</label>
-                        <input type="text" name="recipe_name" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        <label class="block text-gray-700 font-bold">Enter recipe name</label>
+                        <input type="text" name="recipe_name" class="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                     </div>
                     <div>
-                        <label class="block text-gray-700">Enter cooking time</label>
-                        <input type="text" name="cooking_time" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        <label class="block text-gray-700 font-bold">Enter cooking time</label>
+                        <input type="text" name="cooking_time" class="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                     </div>
                     <div>
-                        <label class="block text-gray-700">Enter cuisine types</label>
-                        <select name="cuisine_types" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        <label class="block text-gray-700 font-bold">Enter cuisine types</label>
+                        <select name="cuisine_types" class="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                             <option value="">Select cuisine type</option>
                             <?php
-								// PHP code to fetch cuisine types from database
-								$hostname = "localhost";
-								$username = "root";
-								$password = "";
-								$dbname = "recipe_rocket";
+                                // PHP code to fetch cuisine types from database
+                                $hostname = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "recipe_rocket";
 
-								// Create connection
-								$connect = new mysqli($hostname, $username, $password, $dbname);
+                                // Create connection
+                                $connect = new mysqli($hostname, $username, $password, $dbname);
 
-								// Check connection
-								if ($connect->connect_error) {
-									die("Connection failed: " . $connect->connect_error);
-								}
+                                // Check connection
+                                if ($connect->connect_error) {
+                                    die("Connection failed: " . $connect->connect_error);
+                                }
 
-								// Fetch cuisine types with IDs
-								$sql = "SELECT * FROM cuisine";
-								$result = $connect->query($sql);
+                                // Fetch cuisine types with IDs
+                                $sql = "SELECT * FROM cuisine";
+                                $result = $connect->query($sql);
 
-								if (!$result) {
-									echo "Error: " . $connect->error;
-								} else {
-									if ($result->num_rows > 0) {
-										while ($row = $result->fetch_assoc()) {
-											echo "<option value='" . $row['cuisine_id'] . "'>" . $row['cuisine_type'] . "</option>";
-										}
-									} else {
-										echo "No cuisine types found.";
-									}
-								}
+                                if (!$result) {
+                                    echo "Error: " . $connect->error;
+                                } else {
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row['cuisine_id'] . "'>" . $row['cuisine_type'] . "</option>";
+                                        }
+                                    } else {
+                                        echo "No cuisine types found.";
+                                    }
+                                }
 
-								$connect->close();
-							?>
+                                $connect->close();
+                            ?>
                         </select>
-					</div>
-                    <div>
-                        <label class="block text-gray-700">Enter meal types</label>
-                        <select name="meal_types" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                            <option value="">Select meal type</option>
-                            <?php
-								// PHP code to fetch meal types from database
-								$hostname = "localhost";
-								$username = "root";
-								$password = "";
-								$dbname = "recipe_rocket";
-
-								// Create connection
-								$connect = new mysqli($hostname, $username, $password, $dbname);
-
-								// Check connection
-								if ($connect->connect_error) {
-									die("Connection failed: " . $connect->connect_error);
-								}
-
-								// Fetch meal types with IDs
-								$sql = "SELECT * FROM meal";
-								$result = $connect->query($sql);
-
-								if (!$result) {
-									echo "Error: " . $connect->error;
-								} else {
-									if ($result->num_rows > 0) {
-										while ($row = $result->fetch_assoc()) {
-											echo "<option value='" . $row['meal_id'] . "'>" . $row['meal_type'] . "</option>";
-										}
-									} else {
-										echo "No meal types found.";
-									}
-								}
-
-								$connect->close();
-							?>
-                        </select>
-					</div>
-                    <div>
-                        <label class="block text-gray-700">Enter calories</label>
-                        <input type="text" name="calories" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                     </div>
                     <div>
-                        <label class="block text-gray-700">Enter images</label>
-                        <input type="file" name="file" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        <label class="block text-gray-700 font-bold">Enter meal types</label>
+                        <select name="meal_types" class="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                            <option value="">Select meal type</option>
+                            <?php
+                                // PHP code to fetch meal types from database
+                                $hostname = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "recipe_rocket";
+
+                                // Create connection
+                                $connect = new mysqli($hostname, $username, $password, $dbname);
+
+                                // Check connection
+                                if ($connect->connect_error) {
+                                    die("Connection failed: " . $connect->connect_error);
+                                }
+
+                                // Fetch meal types with IDs
+                                $sql = "SELECT * FROM meal";
+                                $result = $connect->query($sql);
+
+                                if (!$result) {
+                                    echo "Error: " . $connect->error;
+                                } else {
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row['meal_id'] . "'>" . $row['meal_type'] . "</option>";
+                                        }
+                                    } else {
+                                        echo "No meal types found.";
+                                    }
+                                }
+
+                                $connect->close();
+                            ?>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold">Enter calories</label>
+                        <input type="text" name="calories" class="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold">Enter images</label>
+                        <input type="file" name="file" class="w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-4">
                     <div>
-                        <label class="block text-gray-700">Enter ingredients</label>
-                        <textarea name="ingredients" class="textarea-large w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
+                        <label class="block text-gray-700 font-bold">Enter ingredients</label>
+                        <textarea name="ingredients" class="textarea-large w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
                     </div>
                     <div>
-                        <label class="block text-gray-700">Enter cooking instructions</label>
-                        <textarea name="cooking_instructions" class="textarea-large-instruc w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
+                        <label class="block text-gray-700 font-bold">Enter cooking instructions</label>
+                        <textarea name="cooking_instructions" class="textarea-large-instruc w-full p-2 border border-gray-300 rounded-lg mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
                     </div>
                 </div>
             </div>
             <div class="flex justify-between mt-4">
-                <button type="submit" name="addRecipe" class="px-4 py-2 bg-green-500 text-white font-bold rounded-none hover:bg-green-700">Add Recipe</button>
-                <a href="ListOfRecipes.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-none hover:bg-gray-700">Back</a>
+                <button type="submit" name="addRecipe" class="px-4 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-700">Add Recipe</button>
+                <a href="../Admin/ListOfRecipes.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-700">Back</a>
             </div>
         </form>
     </div>
