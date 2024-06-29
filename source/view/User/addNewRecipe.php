@@ -55,14 +55,12 @@
 						{	
 							echo "<script> 
 										alert('New recipe added successfully.');
-								  </script>";
-										
+								  </script>";				
 						}
 						else 
 							echo "<script> 
 										alert('Sorry, new recipe failed to added!');
 								  </script>";
-					
 				} else{
 					echo "<script> 
 								alert('Your file is too big!');
@@ -72,8 +70,7 @@
 				echo "<script> 
 							alert('There was an error uploading your file!');
 					  </script>";
-			} 
-				
+			} 		
 		} else {
 			echo "<script> 
 						alert('You cannot upload this type of file!');
