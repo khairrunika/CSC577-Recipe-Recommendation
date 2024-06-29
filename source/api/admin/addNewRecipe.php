@@ -1,3 +1,87 @@
+<?php							
+	// Database credentials
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "recipe_rocket";
+	
+	// Establishing connection to the database
+	$connect = new mysqli($hostname, $username, $password, $dbname);
+	
+	if (!$connect) 
+	{
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	
+	if(isset($_POST['addRecipe'])){
+		//getting data
+		$recipe_name = $_POST['recipe_name'];
+		$cooking_time = $_POST['cooking_time'];
+		$cuisine_id = $_POST['cuisine_types']; 
+		$meal_id = $_POST['meal_types']; 
+		$calories = $_POST['calories'];
+		$file = $_FILES['file'];
+		$ingredients = $_POST['ingredients'];
+		$cooking_instructions = $_POST['cooking_instructions'];
+
+		// getting file info
+		$fileName = $_FILES['file']['name'];
+		$fileTmpName = $_FILES['file']['tmp_name'];
+		$fileSize = $_FILES['file']['size'];
+		$fileError = $_FILES['file']['error'];
+		$fileType = $_FILES['file']['type'];
+		
+		$filesExt = explode('.',$fileName);
+		$fileActualExt = strtolower(end($filesExt));
+		
+		// pick wht type of file allowed
+		$allowed = array('jpg','pdf', 'png');
+		
+		if(in_array($fileActualExt, $allowed)){
+			if($fileError === 0){
+				if($fileSize < 1000000)
+				{	
+								
+						$fileNameNew = uniqid('', true).".".$fileActualExt;
+						$fileDestination = 'Uploads/'.$fileNameNew;
+						move_uploaded_file($fileTmpName, $fileDestination);
+					
+						$sql = "INSERT INTO `recipe`(`recipe_name`, `recipe_ingredient`, `recipe_cookingInstruction`, `recipe_cookingTime`, `recipe_calories`, `recipe_photo`, `cuisine_id`, `meal_id`) 
+								VALUES ('$recipe_name','$ingredients','$cooking_instructions','$cooking_time', '$calories','$fileDestination', '$cuisine_id','$meal_id')";
+						
+						$sendsql = mysqli_query($connect, $sql);
+		
+						if($sendsql)
+						{	
+							echo "<script> 
+										alert('New recipe added successfully.');
+								  </script>";
+										
+						}
+						else 
+							echo "<script> 
+										alert('Sorry, new recipe failed to added!');
+								  </script>";
+					
+				} else{
+					echo "<script> 
+								alert('Your file is too big!');
+						  </script>";
+				}
+			}else{
+				echo "<script> 
+							alert('There was an error uploading your file!');
+					  </script>";
+			} 
+				
+		} else {
+			echo "<script> 
+						alert('You cannot upload this type of file!');
+				  </script>";
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,12 +145,12 @@
         </div>
         <div class="relative">
             <div class="dropdown">
-                <a href="#" class="text-gray-600 hover:text-gray-800 flex items-center">
+                <a href="" class="text-gray-600 hover:text-gray-800 flex items-center">
                     <img aria-hidden="true" alt="user" src="../../../assets/images/user.png" class="w-6 h-6 object-contain"/>
                 </a>
                 <div class="dropdown-menu absolute bg-white rounded-md shadow-lg z-20">
                     <a href="\view\Admin\adminProfile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
-                    <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
+                    <a href="../../api/admin/logout.php" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
                 </div>
             </div>
         </div>
@@ -74,7 +158,7 @@
 
     <div class="container mx-auto mt-10 px-6">
         <h1 class="text-3xl font-bold mb-6">Insert New Recipe</h1>
-        <form action="" method="post" class="bg-white p-6 rounded shadow-md">
+        <form action="" method="post" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md">
             <div class="grid grid-cols-2 gap-6">
                 <div class="flex flex-col space-y-4">
                     <div>
@@ -97,30 +181,30 @@
 								$dbname = "recipe_rocket";
 
 								// Create connection
-								$conn = new mysqli($hostname, $username, $password, $dbname);
+								$connect = new mysqli($hostname, $username, $password, $dbname);
 
 								// Check connection
-								if ($conn->connect_error) {
-									die("Connection failed: " . $conn->connect_error);
+								if ($connect->connect_error) {
+									die("Connection failed: " . $connect->connect_error);
 								}
 
-								// Fetch cuisine types
-								$sql = "SELECT cuisine_type FROM cuisine";
-								$result = $conn->query($sql);
+								// Fetch cuisine types with IDs
+								$sql = "SELECT * FROM cuisine";
+								$result = $connect->query($sql);
 
 								if (!$result) {
-									echo "Error: " . $conn->error;
+									echo "Error: " . $connect->error;
 								} else {
 									if ($result->num_rows > 0) {
 										while ($row = $result->fetch_assoc()) {
-											echo "<option value='" . $row['cuisine_type'] . "'>" . $row['cuisine_type'] . "</option>";
+											echo "<option value='" . $row['cuisine_id'] . "'>" . $row['cuisine_type'] . "</option>";
 										}
 									} else {
 										echo "No cuisine types found.";
 									}
 								}
 
-								$conn->close();
+								$connect->close();
 							?>
                         </select>
 					</div>
@@ -130,27 +214,37 @@
                             <option value="">Select meal type</option>
                             <?php
 								// PHP code to fetch meal types from database
-								$conn_meal = new mysqli($hostname, $username, $password, $dbname);
+								$hostname = "localhost";
+								$username = "root";
+								$password = "";
+								$dbname = "recipe_rocket";
+
+								// Create connection
+								$connect = new mysqli($hostname, $username, $password, $dbname);
 
 								// Check connection
-								if ($conn_meal->connect_error) {
-									die("Connection failed: " . $conn_meal->connect_error);
+								if ($connect->connect_error) {
+									die("Connection failed: " . $connect->connect_error);
 								}
 
-								// Fetch meal types
-								$sql_meal = "SELECT meal_type FROM meal";
-								$result_meal = $conn_meal->query($sql_meal);
+								// Fetch meal types with IDs
+								$sql = "SELECT * FROM meal";
+								$result = $connect->query($sql);
 
-								if ($result_meal->num_rows > 0) {
-									while ($row_meal = $result_meal->fetch_assoc()) {
-										echo "<option value='" . $row_meal['meal_type'] . "'>" . $row_meal['meal_type'] . "</option>";
-									}
+								if (!$result) {
+									echo "Error: " . $connect->error;
 								} else {
-									echo "No meal types found.";
+									if ($result->num_rows > 0) {
+										while ($row = $result->fetch_assoc()) {
+											echo "<option value='" . $row['meal_id'] . "'>" . $row['meal_type'] . "</option>";
+										}
+									} else {
+										echo "No meal types found.";
+									}
 								}
 
-								$conn_meal->close();
-                            ?>
+								$connect->close();
+							?>
                         </select>
 					</div>
                     <div>
@@ -159,7 +253,7 @@
                     </div>
                     <div>
                         <label class="block text-gray-700">Enter images</label>
-                        <input type="file" name="images" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        <input type="file" name="file" class="w-full p-2 border border-gray-300 rounded-none mt-1 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
                     </div>
                 </div>
                 <div class="flex flex-col space-y-4">
@@ -175,7 +269,7 @@
             </div>
             <div class="flex justify-between mt-4">
                 <button type="submit" name="addRecipe" class="px-4 py-2 bg-green-500 text-white font-bold rounded-none hover:bg-green-700">Add Recipe</button>
-                <a href="listOfRecipe.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-none hover:bg-gray-700">Back</a>
+                <a href="ListOfRecipes.html" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-none hover:bg-gray-700">Back</a>
             </div>
         </form>
     </div>
