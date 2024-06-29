@@ -59,7 +59,7 @@
                     dataType: 'json',
                     success: function(response) {
                         if (response.status == 'success') {
-                            window.location.href = 'homepage.html'; // Redirect to dashboard or another page
+                            window.location.href = 'homepage.html'; // Redirect to homepage initially
                         } else {
                             $('#loginResponse').html('<div class="alert alert-danger">' + response.message + '</div>');
                         }
